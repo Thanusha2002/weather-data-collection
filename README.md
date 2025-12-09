@@ -1,270 +1,178 @@
-Weather Data Collection System
+# Weather Data Collection System
 
-A complete end-to-end DevOps project that collects real-time weather data from the OpenWeather API, processes it using Python, and stores timestamped results in AWS S3 for historical analysis.
+## 📌 Overview
 
-This project demonstrates essential DevOps practices including:
+This project is a **Weather Data Collection System** built using core DevOps and cloud concepts. It fetches real-time weather information from the **OpenWeather API**, processes it using Python, and stores the results in **AWS S3**. Infrastructure is managed using **Terraform**, and the system includes proper error handling, environment management, and version control.
 
-External API Integration
+---
 
-Cloud Storage (AWS S3)
+## ⭐ Features
 
-Infrastructure as Code (Terraform)
+* Fetches real-time weather data for **multiple cities**.
+* Retrieves **temperature (°F)**, **humidity**, and **weather conditions**.
+* Automatically uploads data as **JSON files** to AWS S3.
+* Creates **timestamped historical records**.
+* Implements **clean architecture** in Python.
+* Environment variables handled via `.env`.
+* Infrastructure as Code using **Terraform**.
 
-Secure Environment Management
+---
 
-Python Development
+## 🏗️ Architecture Diagram
 
-CI/CD readiness
+```
+                +---------------------------+
+                |     OpenWeather API       |
+                +--------------+------------+
+                               |
+                               v
+                    +----------+---------+
+                    |   Python Script    |
+                    | (weather_fetcher)  |
+                    +----+----------+----+
+                         |          |
+                         v          v
+              +----------+--+   +---+----------------+
+              |  Process Data |   | Format  JSON      |
+              +----------+----+   +------------------+
+                         |
+                         v
+                +--------+--------+
+                |   AWS S3 Bucket |
+                | (Store Weather) |
+                +-----------------+
+```
 
-Error handling & logging
+---
 
-Version control (Git + GitHub)
+## 📂 Project Structure
 
-📘 1. Project Overview
-
-The system performs the following tasks:
-
-1️⃣ Reads city names and credentials from environment variables
-2️⃣ Fetches real-time weather data using the OpenWeather API
-3️⃣ Extracts temperature, humidity, and weather conditions
-4️⃣ Adds a UTC timestamp
-5️⃣ Stores data in AWS S3 as JSON files
-6️⃣ Maintains directory structure:
-
-weather/YYYY/MM/DD/HHMMSS_city.json
-
-
-This lets you build historical weather datasets for analytics or dashboards.
-
-🏗️ 2. Architecture Diagram
-               ┌────────────────────┐
-               │    User / Cron     │
-               └─────────┬──────────┘
-                         │ Triggers
-                         ▼
-                ┌────────────────────┐
-                │   Python App       │
-                │  (app.py)          │
-                └─────────┬──────────┘
-                          │
-        ┌─────────────────┼─────────────────────┐
-        ▼                 ▼                     ▼
-┌───────────────┐  ┌───────────────┐   ┌───────────────────┐
-│ Weather Client │  │ Data Processor│   │   S3 Uploader     │
-│ OpenWeather API│  │ timestamping  │   │  boto3 library    │
-└───────┬────────┘  └──────┬────────┘   └─────────┬────────┘
-        │ API Response      │ JSON object          │
-        ▼                   ▼                      ▼
-                 ┌──────────────────────┐
-                 │ AWS S3 Bucket       │
-                 │ (Historical Storage)│
-                 └──────────────────────┘
-
-📂 3. Project File Structure
-weather-devops-demo/
+```
+weather-data-collection-system/
+│
+├── main.py
+├── weather_fetcher.py
+├── utils.py
+├── requirements.txt
 ├── README.md
 ├── .env.example
-├── requirements.txt
-├── .gitignore
-├── infra/
-│   └── main.tf
-├── src/
-│   ├── app.py
-│   ├── config.py
-│   ├── utils.py
-│   ├── weather_client.py
-│   └── s3_uploader.py
-└── tests/
-    ├── test_weather_client.py
-    └── test_s3_uploader.py
+│
+├── tests/
+│   └── test_weather_fetcher.py
+│
+└── terraform/
+    ├── main.tf
+    ├── variables.tf
+    ├── outputs.tf
+    └── provider.tf
+```
 
+---
 
-This structure cleanly separates:
+## ⚙️ Installation & Setup
 
-Application logic (src/)
+### 1️⃣ Clone the repository
 
-Infrastructure (infra/)
+```bash
+git clone https://github.com/your-username/weather-data-collection-system.git
+cd weather-data-collection-system
+```
 
-Tests (tests/)
+### 2️⃣ Create a virtual environment
 
-Documentation (README.md)
+```bash
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+```
 
-🔧 4. Technologies Used
-Component	Technology
-Language	Python 3.x
-API	OpenWeather API
-Cloud	AWS S3
-IaC	Terraform
-SDK	boto3
-Config	python-dotenv
-HTTP	requests
-Testing	pytest + moto
-CI-ready	Git + GitHub
-🛠️ 5. Setup Instructions
-Step 1 — Clone the project
-git clone https://github.com/<your-username>/weather-devops-demo.git
-cd weather-devops-demo
+### 3️⃣ Install dependencies
 
-Step 2 — Install dependencies
-python -m venv .venv
-source .venv/bin/activate    # Windows: .venv\Scripts\activate
+```bash
 pip install -r requirements.txt
+```
 
-Step 3 — Configure environment variables
+### 4️⃣ Configure your `.env` file
 
-Copy the example file:
+Create a new `.env` file:
 
-cp .env.example .env
-
-
-Fill in:
-
-OPENWEATHER_API_KEY=your_api_key
-AWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret
-AWS_REGION=us-east-1
-S3_BUCKET_NAME=your-bucket
+```
+OPENWEATHER_API_KEY=your_api_key_here
+AWS_ACCESS_KEY_ID=your_access_key
+AWS_SECRET_ACCESS_KEY=your_secret_key
+AWS_REGION=ap-south-1
+S3_BUCKET_NAME=your-bucket-name
 CITIES=London,New York,Tokyo
-LOG_LEVEL=INFO
+```
 
+---
 
-⚠️ Never commit .env to GitHub.
+## ▶️ Running the Application
 
-Step 4 — Run the application
-python -m src.app
+Run the main script:
 
+```bash
+python main.py
+```
 
-Expected output example:
+Expected Output:
 
-Fetching weather for London...
-Uploaded to s3://your-bucket/weather/2025/12/09/113005_london.json
+* Weather printed in terminal
+* JSON files uploaded to S3 bucket
 
-☁️ 6. AWS S3 Output Structure
+---
 
-Each run generates files like:
+## ☁️ Terraform Deployment
 
-weather/
- └── 2025/
-     └── 12/
-         └── 09/
-             └── 113005_london.json
+Navigate to Terraform folder:
 
-
-Example stored JSON:
-
-{
-  "city": "London",
-  "timestamp": "2025-12-09T11:30:05Z",
-  "temperature_f": 61.2,
-  "humidity": 70,
-  "conditions": "broken clouds",
-  "raw": { ... }
-}
-
-🔨 7. Infrastructure as Code (Terraform)
-
-Inside /infra/main.tf you have:
-
-S3 bucket creation
-
-Versioning
-
-Lifecycle rules
-
-Tags
-
-Run:
-
-cd infra
+```bash
+cd terraform
 terraform init
-terraform plan -var="bucket_name=your-bucket"
-terraform apply -var="bucket_name=your-bucket"
+terraform plan
+terraform apply
+```
 
-🧪 8. Testing the Project
+This will create:
 
-Run all tests:
+* S3 bucket
+* IAM policy
+* IAM user
 
-pytest -q
+---
 
+## 🧪 Running Tests
 
-Testing covers:
+```bash
+pytest
+```
 
-API client behavior
+Expected: All tests should pass ✔️
 
-S3 uploads using moto mock
+---
 
-Error handling
+## 📘 Technologies Used
 
-🔄 9. CI/CD (Optional)
+* Python 3.x
+* AWS S3
+* Terraform
+* Requests
+* Boto3
+* Python-dotenv
+* Git & GitHub
 
-You can add GitHub Actions:
+---
 
-Automatic tests on every push
+## 🔗 Submit Required Artifacts
 
-Auto-run app on a schedule (e.g., hourly)
+You must submit:
 
-Deployment workflows
+* Architectural Diagram
+* GitHub Repository Link
 
-(Ask me and I will generate the workflow file.)
+---
 
-🧩 10. Key Features Explained
-✅ Multi-city support
+## ✨ Author
 
-Load unlimited cities via .env like:
+Thanusha — Weather Data Collection System Project
 
-CITIES=London,Delhi,Paris,Sydney
-
-✅ Robust error handling
-
-Retries
-
-Timeout control
-
-Logging
-
-✅ Timestamped historical data
-
-Optimized for analytics and future visualization.
-
-✅ Highly scalable
-
-Add more cities or more AWS services easily.
-
-🧭 11. Future Improvements
-
-Dockerize and deploy using AWS ECS or Lambda
-
-Add SNS alerts for failure notifications
-
-Add Athena + Glue database for SQL analytics
-
-Build a visualization dashboard (Streamlit / Grafana)
-
-Add CI/CD automation for Terraform
-
-👨‍💻 Author
-
-Thanusha
-DevOps Engineer | AWS | Terraform | Python
-GitHub: https://github.com/
-<your-username>
-
-🎉 12. Summary
-
-This Weather Data Collection System is a complete DevOps-driven project demonstrating:
-
-API consumption
-
-Cloud data storage
-
-Infrastructure as Code
-
-Automation
-
-Python engineering
-
-Logging, retries, and proper error control
-
-Structured project architecture
-
-You can proudly submit or showcase this project as a real-world DevOps mini-project.
+---
