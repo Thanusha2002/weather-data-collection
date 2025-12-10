@@ -1,12 +1,12 @@
 # Weather Data Collection System
 
-## 📌 Overview
+##  Overview
 
 This project is a **Weather Data Collection System** built using core DevOps and cloud concepts. It fetches real-time weather information from the **OpenWeather API**, processes it using Python, and stores the results in **AWS S3**. Infrastructure is managed using **Terraform**, and the system includes proper error handling, environment management, and version control.
 
 ---
 
-## ⭐ Features
+##  Features
 
 * Fetches real-time weather data for **multiple cities**.
 * Retrieves **temperature (°F)**, **humidity**, and **weather conditions**.
@@ -18,7 +18,7 @@ This project is a **Weather Data Collection System** built using core DevOps and
 
 ---
 
-## 🏗️ Architecture Diagram
+##  Architecture Diagram
 
 ```
                 +---------------------------+
@@ -45,7 +45,7 @@ This project is a **Weather Data Collection System** built using core DevOps and
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 weather-data-collection-system/
@@ -69,7 +69,7 @@ weather-data-collection-system/
 
 ---
 
-## ⚙️ Installation & Setup
+##  Installation & Setup
 
 ### 1️⃣ Clone the repository
 
@@ -121,7 +121,7 @@ Expected Output:
 
 ---
 
-## ☁️ Terraform Deployment
+##  Terraform Deployment
 
 Navigate to Terraform folder:
 
@@ -140,7 +140,7 @@ This will create:
 
 ---
 
-## 🧪 Running Tests
+##  Running Tests
 
 ```bash
 pytest
@@ -150,7 +150,7 @@ Expected: All tests should pass ✔️
 
 ---
 
-## 📘 Technologies Used
+##  Technologies Used
 
 * Python 3.x
 * AWS S3
@@ -162,12 +162,10 @@ Expected: All tests should pass ✔️
 
 ---
 
-## 🔗 Submit Required Artifacts
+## outputs
+<img width="1351" height="676" alt="Screenshot 2025-12-10 123929" src="https://github.com/user-attachments/assets/03cc1d9a-c739-4f87-a0b8-b9ec1cce08c6" />
+<img width="1334" height="605" alt="Screenshot 2025-12-10 124754" src="https://github.com/user-attachments/assets/14325636-4532-4a50-ad8f-9f4ce703e76c" />
 
-You must submit:
-
-* Architectural Diagram
-* GitHub Repository Link
 
 ---
 
