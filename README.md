@@ -165,7 +165,7 @@ Expected: All tests should pass ✔️
 ## outputs
 <img width="1351" height="676" alt="Screenshot 2025-12-10 123929" src="https://github.com/user-attachments/assets/03cc1d9a-c739-4f87-a0b8-b9ec1cce08c6" />
 <img width="1334" height="605" alt="Screenshot 2025-12-10 124754" src="https://github.com/user-attachments/assets/14325636-4532-4a50-ad8f-9f4ce703e76c" />
-<img width="659" height="219" alt="Screenshot 2025-12-09 224940" src="https://github.com/user-attachments/assets/3eaeba59-e843-434c-ab4e-df3f209ee33e" />
+<img width="626" height="209" alt="Screenshot 2025-12-09 223716" src="https://github.com/user-attachments/assets/9d731e70-4e59-4b5f-88b1-17cd80c7ac16" />
 
 
 ---
