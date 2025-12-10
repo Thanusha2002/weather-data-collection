@@ -43,7 +43,8 @@ This project is a **Weather Data Collection System** built using core DevOps and
 
            +-----------------+
 ```
-<img width="626" height="209" alt="Screenshot 2025-12-09 223716" src="https://github.com/user-attachments/assets/1e980f15-7cf8-4ca1-855e-3d4786594fb7" />
+<img width="911" height="478" alt="Screenshot (107)" src="https://github.com/user-attachments/assets/392b2e49-cb42-4a95-b013-f295f2119343" />
+
 
 ---
 
