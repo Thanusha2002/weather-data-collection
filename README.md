@@ -74,27 +74,27 @@ weather-data-collection-system/
 
 ##  Installation & Setup
 
-### 1️⃣ Clone the repository
+### 1️ Clone the repository
 
 ```bash
 git clone https://github.com/your-username/weather-data-collection-system.git
 cd weather-data-collection-system
 ```
 
-### 2️⃣ Create a virtual environment
+### 2️ Create a virtual environment
 
 ```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
 
-### 3️⃣ Install dependencies
+### 3️ Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Configure your `.env` file
+### 4️ Configure your `.env` file
 
 Create a new `.env` file:
 
@@ -109,7 +109,7 @@ CITIES=London,New York,Tokyo
 
 ---
 
-## ▶️ Running the Application
+##  Running the Application
 
 Run the main script:
 
@@ -149,7 +149,7 @@ This will create:
 pytest
 ```
 
-Expected: All tests should pass ✔️
+Expected: All tests should pass 
 
 ---
 
